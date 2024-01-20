@@ -1,0 +1,34 @@
+From aca793a71cf37063f2d56b6bafbd2787426dcd3e Mon Sep 17 00:00:00 2001
+From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
+Date: Sun, 31 Dec 2023 16:07:07 +0100
+Subject: [PATCH] LibreELEC constants
+
+---
+ internal/constants.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/internal/constants.go b/internal/constants.go
+index b680bc2..6701d8f 100644
+--- a/internal/constants.go
++++ b/internal/constants.go
+@@ -33,7 +33,7 @@ const (
+ 	LogPath = "/var/log/nordvpn/"
+ 
+ 	// NordvpnGroup that can access daemon socket
+-	NordvpnGroup = "nordvpn"
++	NordvpnGroup = "root"
+ 
+ 	// DaemonSocket defines system daemon socket file location
+ 	DaemonSocket = RunDir + "nordvpnd.sock"
+@@ -93,7 +93,7 @@ const (
+ 	ResolvconfFilePath = "/etc/resolv.conf"
+ 
+ 	// AppDataPath defines path where app data is stored
+-	AppDataPath = "/var/lib/nordvpn/"
++	AppDataPath = "/storage/.kodi/userdata/addon_data/service.nordvpn/"
+ 
+ 	DatFilesPath = AppDataPath + "data/"
+ 
+-- 
+2.34.1
+
