@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<settings version="1">
+  <section id="service.audio_switch">
+    <category id="general" label="" help="">
+      <setting id="device_audio" type="text" label="" help="">
+        <level>0</level>
+      </setting>
+      <setting id="device_video" type="text" label="" help="">
+        <level>0</level>
+      </setting>
+    </category>
+  </section>
+</settings>
