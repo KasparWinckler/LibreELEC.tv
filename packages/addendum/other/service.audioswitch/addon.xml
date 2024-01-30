@@ -1,0 +1,12 @@
+<addon id="service.audio_switch" name="Audio Switch" version="0.0.2">
+  <extension point="xbmc.service" library="script.py" />
+  <extension point="xbmc.python.script" library="script.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Audio Switch</summary>
+    <description>Audio Switch automatically switches audio device according to what is played.</description>
+    <platform>all</platform>
+    <license>GPL-2.0</license>
+  </extension>
+</addon>
