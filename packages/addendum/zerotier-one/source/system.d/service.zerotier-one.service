@@ -1,0 +1,13 @@
+[Unit]
+Description=ZeroTier One
+Wants=network-online.target multi-user.target
+After=network-online.target
+Before=multi-user.target
+
+[Service]
+SyslogIdentifier=%N
+ExecStart=/storage/.kodi/addons/service.zerotier-one/bin/zerotier-one.sh
+Restart=always
+
+[Install]
+WantedBy=network-online.target multi-user.target

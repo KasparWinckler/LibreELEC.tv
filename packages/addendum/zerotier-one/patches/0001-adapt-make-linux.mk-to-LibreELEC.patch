@@ -1,0 +1,52 @@
+From e5224c66c4854bcf3173e8dc81eb377bf5efb8dc Mon Sep 17 00:00:00 2001
+From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
+Date: Fri, 2 Feb 2024 20:14:50 +0100
+Subject: [PATCH] adapt make-linux.mk to LibreELEC
+
+---
+ make-linux.mk | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/make-linux.mk b/make-linux.mk
+index 48d44a04..eeffdc43 100644
+--- a/make-linux.mk
++++ b/make-linux.mk
+@@ -9,7 +9,7 @@ ifeq ($(origin CXX),default)
+ 	CXX:=$(shell if [ -e /opt/rh/devtoolset-8/root/usr/bin/g++ ]; then echo /opt/rh/devtoolset-8/root/usr/bin/g++; else echo $(CXX); fi)
+ endif
+ 
+-INCLUDES?=-Izeroidc/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
++INCLUDES?=-I.${TARGET_NAME}/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
+ DEFS?=
+ LDLIBS?=
+ DESTDIR?=
+@@ -110,7 +110,7 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
+ endif
+ 
+ # Determine system build architecture from compiler target
+-CC_MACH=$(shell $(CC) -dumpmachine | cut -d '-' -f 1)
++CC_MACH=${ARCH}
+ ZT_ARCHITECTURE=999
+ ifeq ($(CC_MACH),x86_64)
+ 	ZT_ARCHITECTURE=2
+@@ -297,7 +297,7 @@ ifeq ($(ZT_SSO_SUPPORTED), 1)
+ 		ifeq ($(ZT_DEBUG),1)
+ 			LDLIBS+=zeroidc/target/debug/libzeroidc.a -ldl -lssl -lcrypto
+ 		else
+-			LDLIBS+=zeroidc/target/release/libzeroidc.a -ldl -lssl -lcrypto
++			LDLIBS+=.${TARGET_NAME}/target/${TARGET_NAME}/release/libzeroidc.a -ldl -lssl -lcrypto
+ 		endif
+ 	endif
+ endif
+@@ -433,7 +433,7 @@ ifeq ($(ZT_SSO_SUPPORTED), 1)
+ ifeq ($(ZT_EMBEDDED),)
+ zeroidc:	FORCE
+ #	export PATH=/root/.cargo/bin:$$PATH; cd zeroidc && cargo build -j1 $(RUSTFLAGS)
+-	export PATH=/${HOME}/.cargo/bin:$$PATH; cd zeroidc && cargo build $(RUSTFLAGS)
++	cd zeroidc && cargo build --target ${TARGET_NAME} $(RUSTFLAGS)
+ endif
+ else
+ zeroidc:
+-- 
+2.34.1
+
