@@ -1,0 +1,33 @@
+From eba7cc00ffb40beb933dcab748212c81b8e79628 Mon Sep 17 00:00:00 2001
+From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
+Date: Mon, 12 Feb 2024 17:53:13 +0100
+Subject: [PATCH 3/3] LibreELEC notification
+
+---
+ daemon/notify.go | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/notify.go b/daemon/notify.go
+index b3e404d..db76661 100644
+--- a/daemon/notify.go
++++ b/daemon/notify.go
+@@ -46,7 +46,15 @@ func notify(id int64, body string) error {
+ 	var cmd *exec.Cmd
+ 	commandContext, cancelFunc := context.WithTimeout(context.Background(), time.Second*5)
+ 	defer cancelFunc()
+-	if internal.IsCommandAvailable("notify-send") {
++	if internal.IsCommandAvailable("kodi-send") {
++		cmd = exec.CommandContext(commandContext,
++			"kodi-send",
++			fmt.Sprintf("--action=RunScript(service.nordvpn, notification, %s, %s, %s)", summary, body, IconPath))
++		err := cmd.Run()
++		if err != nil {
++			return fmt.Errorf("running notify command: %w", err)
++		}
++	} else if internal.IsCommandAvailable("notify-send") {
+ 		cmd = exec.CommandContext(commandContext, "notify-send", "-t", "3000", "-i", IconPath, summary, body)
+ 	} else if internal.IsCommandAvailable("kdialog") {
+ 		cmd = exec.CommandContext(commandContext,
+-- 
+2.34.1
+
