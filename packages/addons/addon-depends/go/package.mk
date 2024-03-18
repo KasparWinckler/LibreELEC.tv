@@ -30,7 +30,7 @@ configure_host() {
 # $ sudo apt install golang-go
 ####################################################################
 EOF
-    return 1
+    # return 1
   fi
 }
 
