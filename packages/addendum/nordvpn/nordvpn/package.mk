@@ -1,7 +1,7 @@
 PKG_NAME="nordvpn"
-PKG_VERSION="3.17.2"
-PKG_SHA256="f3d002fbcc8f7611aa6ac235cfeb4dd0dcec3475178a296ab6f165b87b582289"
-PKG_REV="3"
+PKG_VERSION="3.17.3"
+PKG_SHA256="ec927cc09e4b91112b8596ea98d3518f261a9e0be5ed227fc2240e0045a1b9b0"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://nordvpn.com/"
@@ -31,10 +31,6 @@ configure_target() {
   export REVISION=1
   export VERSION=${PKG_VERSION}
 
-  # internal/helpers.go:6:30: S (type T) does not satisfy ~[]E
-  ${GOLANG} mod edit -replace github.com/google/go-cmp=github.com/google/go-cmp@v0.5.8
-  # quic-go does not build with go 1.21.6
-  ${GOLANG} mod edit -replace github.com/quic-go/quic-go=github.com/quic-go/quic-go@v0.41.0
   # gokogiri could not determine kind of name for C.free
   ${GOLANG} mod edit -replace github.com/jbowtie/gokogiri=github.com/KasparWinckler/gokogiri@b026747eeb5eef30800ef348cb23094c24812ebc
   ${GOLANG} mod tidy
@@ -60,8 +56,8 @@ addon() {
        ${ADDON_BUILD}/${PKG_ADDON_ID}/bin
   mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
     cp ${PKG_INSTALL}/usr/bin/nordvpnd \
-	   $(get_install_dir iproute2)/sbin/ip \
-	   $(get_install_dir ipset)/usr/sbin/ipset \
-	   $(get_install_dir sysctl)/usr/bin/sysctl \
-	   ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
+	     $(get_install_dir iproute2)/sbin/ip \
+	     $(get_install_dir ipset)/usr/sbin/ipset \
+	     $(get_install_dir sysctl)/usr/bin/sysctl \
+	     ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
 }
