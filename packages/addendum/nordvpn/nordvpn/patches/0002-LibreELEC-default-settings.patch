@@ -1,7 +1,7 @@
-From 5e4235fabd179df871de194b2da2b33e1e8d4cff Mon Sep 17 00:00:00 2001
+From 9e823122248077c99c4ae69549f4d80dac0debc6 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Tue, 9 Jan 2024 21:35:11 +0100
-Subject: [PATCH 2/3] LibreELEC default settings
+Subject: [PATCH 2/2] LibreELEC default settings
 
 ---
  config/config.go | 11 ++++++-----
