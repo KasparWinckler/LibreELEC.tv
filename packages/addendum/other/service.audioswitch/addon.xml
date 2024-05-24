@@ -1,4 +1,4 @@
-<addon id="service.audio_switch" name="Audio Switch" version="0.0.2">
+<addon id="service.audio_switch" name="Audio Switch" version="0.0.3">
   <extension point="xbmc.service" library="script.py" />
   <extension point="xbmc.python.script" library="script.py">
     <provides>executable</provides>
