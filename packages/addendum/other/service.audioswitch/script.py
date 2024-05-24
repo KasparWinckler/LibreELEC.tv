@@ -54,24 +54,6 @@ def settings_get_device(id):
     return value if value else jsonrpc_get_audiodevice()
 
 
-class Player(xbmc.Player):
-    def onAVChange(self):
-        old = jsonrpc_get_audiodevice()
-        if xbmc.getCondVisibility("Pvr.IsPlayingRadio") or xbmc.getCondVisibility(
-            "Player.HasAudio"
-        ):
-            new = settings_get_device(DEVICE_AUDIO)
-        else:
-            new = settings_get_device(DEVICE_VIDEO)
-        if new != old:
-            log(f"Switching to {new}")
-            muted = jsonrpc_get_muted()
-            jsonrpc_set_mute(True)
-            jsonrpc_set_audiodevice(new)
-            jsonrpc_set_mute(muted)
-            log(f"Switched to {new}")
-
-
 def script():
     menu = [
         ["Device for audio", DEVICE_AUDIO],
@@ -100,8 +82,26 @@ def script_set_device(heading, id):
 
 def service():
     log("Service started")
-    player = Player()
-    xbmc.Monitor().waitForAbort()
+    old = jsonrpc_get_audiodevice()
+    player = xbmc.Player()
+    monitor = xbmc.Monitor()
+    while True:
+        if monitor.waitForAbort(1):
+            break
+        if player.isPlayingAudio():
+            new = settings_get_device(DEVICE_AUDIO)
+        elif player.isPlayingVideo():
+            new = settings_get_device(DEVICE_VIDEO)
+        else:
+            new = old
+        if new != old:
+            log(f"Switching to {new}")
+            # muted = jsonrpc_get_muted()
+            # jsonrpc_set_mute(True)
+            jsonrpc_set_audiodevice(new)
+            # jsonrpc_set_mute(muted)
+            log(f"Switched to {new}")
+            old = new
     log("Service stopped")
 
 
