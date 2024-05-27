@@ -82,26 +82,20 @@ def script_set_device(heading, id):
 
 def service():
     log("Service started")
-    old = jsonrpc_get_audiodevice()
     player = xbmc.Player()
     monitor = xbmc.Monitor()
-    while True:
-        if monitor.waitForAbort(1):
-            break
-        if player.isPlayingAudio():
-            new = settings_get_device(DEVICE_AUDIO)
-        elif player.isPlayingVideo():
-            new = settings_get_device(DEVICE_VIDEO)
-        else:
-            new = old
-        if new != old:
-            log(f"Switching to {new}")
-            # muted = jsonrpc_get_muted()
-            # jsonrpc_set_mute(True)
-            jsonrpc_set_audiodevice(new)
-            # jsonrpc_set_mute(muted)
-            log(f"Switched to {new}")
-            old = new
+    old_device = jsonrpc_get_audiodevice()
+    while not monitor.waitForAbort(1):
+        if player.isPlaying():
+            if player.isPlayingAudio():
+                new_device = settings_get_device(DEVICE_AUDIO)
+            else:
+                new_device = settings_get_device(DEVICE_VIDEO)
+            if old_device != new_device:
+                log(f"Switching to {new_device}")
+                jsonrpc_set_audiodevice(new_device)
+                log(f"Switched to {new_device}")
+                old_device = new_device
     log("Service stopped")
 
 
