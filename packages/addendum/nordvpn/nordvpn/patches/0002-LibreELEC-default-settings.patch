@@ -1,14 +1,14 @@
-From 9e823122248077c99c4ae69549f4d80dac0debc6 Mon Sep 17 00:00:00 2001
+From de38e5a1a8681c8bc3fb78b1b8a634565e37074c Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
-Date: Tue, 9 Jan 2024 21:35:11 +0100
+Date: Wed, 12 Jun 2024 13:43:46 +0200
 Subject: [PATCH 2/2] LibreELEC default settings
 
 ---
- config/config.go | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ config/config.go | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/config/config.go b/config/config.go
-index 050b797..eaf96fa 100644
+index 5f3edf4..022202b 100644
 --- a/config/config.go
 +++ b/config/config.go
 @@ -13,7 +13,7 @@ import (
@@ -17,10 +17,10 @@ index 050b797..eaf96fa 100644
  func newConfig() *Config {
 -	ids, _ := internal.SystemUsersIDs()
 +	var ids = []int64{0}
- 	users := make(map[int64]bool, len(ids))
+ 	notifyUsers := make(map[int64]bool, len(ids))
+ 	trayOffUsers := make(map[int64]bool, len(ids))
  	for _, id := range ids {
- 		users[id] = true
-@@ -21,14 +21,15 @@ func newConfig() *Config {
+@@ -23,7 +23,7 @@ func newConfig() *Config {
  
  	return &Config{
  		Technology:   Technology_NORDLYNX,
@@ -29,13 +29,10 @@ index 050b797..eaf96fa 100644
  		FirewallMark: defaultFWMarkValue,
  		AutoConnectData: AutoConnectData{
  			Protocol: Protocol_UDP,
- 		},
--		MachineID:  internal.MachineID(),
--		UsersData:  &UsersData{Notify: users},
--		TokensData: map[int64]TokenData{},
-+		MachineID:    internal.MachineID(),
-+		UsersData:    &UsersData{Notify: users},
-+		TokensData:   map[int64]TokenData{},
+@@ -31,6 +31,7 @@ func newConfig() *Config {
+ 		MachineID:  internal.MachineID(),
+ 		UsersData:  &UsersData{Notify: notifyUsers, TrayOff: trayOffUsers},
+ 		TokensData: map[int64]TokenData{},
 +		LanDiscovery: true,
  	}
  }
