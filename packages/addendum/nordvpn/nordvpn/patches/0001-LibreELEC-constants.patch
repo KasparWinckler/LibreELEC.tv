@@ -1,6 +1,6 @@
-From e29751c3080f29767d50bdc5a0d24e1ed301a8bf Mon Sep 17 00:00:00 2001
+From 7e6225edf1b198e04a7ae374b834361d41146583 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
-Date: Fri, 29 Mar 2024 10:48:14 +0100
+Date: Tue, 23 Jul 2024 16:42:31 +0200
 Subject: [PATCH 1/2] LibreELEC constants
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] LibreELEC constants
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/internal/constants.go b/internal/constants.go
-index a55280f..9e99240 100644
+index 77f8200..66a5d8a 100644
 --- a/internal/constants.go
 +++ b/internal/constants.go
 @@ -26,7 +26,7 @@ const (
@@ -20,7 +20,7 @@ index a55280f..9e99240 100644
  
  	// PermUserRWX user permission type to read write and execute
  	PermUserRWX = 0700
-@@ -95,18 +95,18 @@ var (
+@@ -94,17 +94,17 @@ var (
  	RunDir = PrefixCommonPath("/run/nordvpn")
  
  	// LogPath defines where logs are located if systemd isn't used
@@ -36,12 +36,11 @@ index a55280f..9e99240 100644
 -	AppDataPathCommon = PrefixCommonPath("/var/lib/nordvpn")
 +	AppDataPathCommon = PrefixCommonPath("/storage/.kodi/userdata/addon_data/service.nordvpn")
  
- 	// AppDataPathStatic defines path where static app data (such as helper executables) are
- 	// stored. Normally it is the same as AppDataPath
--	AppDataPathStatic = PrefixStaticPath("/var/lib/nordvpn")
+ 	// AppDataPathStatic defines path where static app data (such as helper executables) are stored
+-	AppDataPathStatic = PrefixStaticPath("/usr/lib/nordvpn")
 +	AppDataPathStatic = PrefixStaticPath("/storage/.kodi/userdata/addon_data/service.nordvpn")
  
- 	UsrBinPathStatic = PrefixStaticPath("/usr/bin")
+ 	DatFilesPath = filepath.Join(AppDataPath, "data")
  
 -- 
 2.34.1
