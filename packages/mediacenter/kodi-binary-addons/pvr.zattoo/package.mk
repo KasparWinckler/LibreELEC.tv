@@ -2,9 +2,9 @@
 # Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="pvr.zattoo"
-PKG_VERSION="21.0.1-Omega"
-PKG_SHA256="5908de86c038b3565d8b3a8d4578d4cac0d37287fc039808542b874d9fb2bffa"
-PKG_REV="2"
+PKG_VERSION="21.0.3-Omega"
+PKG_SHA256="20361e6de6bd783203e73dc19f8aa0bfc1e269508bfc7933477fbaa1e8a4b9e9"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/rbuehlma/pvr.zattoo"
