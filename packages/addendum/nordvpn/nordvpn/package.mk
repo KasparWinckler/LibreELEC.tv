@@ -1,7 +1,7 @@
 PKG_NAME="nordvpn"
 PKG_VERSION="3.18.4"
 PKG_SHA256="e1a4be2fb859d8afc355fe05418bed9481dc5e570bb17f42ec22e51f5efe5b7d"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://nordvpn.com/"
