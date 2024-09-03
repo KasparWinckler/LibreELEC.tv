@@ -96,7 +96,7 @@ def addon_connect(heading):
 
 
 def addon_country(heading, prefix=[]):
-    countries = prefix + run(f"{NORDVPN} countries").stdout.split(", ")
+    countries = prefix + run(f"{NORDVPN} countries").stdout.split()
     index = DIALOG.select(f"{heading} option", countries)
     if index >= 0:
         return countries[index]
