@@ -1,0 +1,54 @@
+From 71ffd00d273ccf2c5f2361cd76a59cfd23d5474a Mon Sep 17 00:00:00 2001
+From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
+Date: Mon, 2 Sep 2024 00:17:44 +0200
+Subject: [PATCH] adapt make-linux.mk to LibreELEC
+
+---
+ make-linux.mk | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/make-linux.mk b/make-linux.mk
+index bfa416aa..ae30b5df 100644
+--- a/make-linux.mk
++++ b/make-linux.mk
+@@ -9,7 +9,7 @@ ifeq ($(origin CXX),default)
+ 	CXX:=$(shell if [ -e /opt/rh/devtoolset-8/root/usr/bin/g++ ]; then echo /opt/rh/devtoolset-8/root/usr/bin/g++; else echo $(CXX); fi)
+ endif
+ 
+-INCLUDES?=-Irustybits/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
++INCLUDES?=-I.${TARGET_NAME}/target -Irustybits/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
+ DEFS?=
+ LDLIBS?=
+ DESTDIR?=
+@@ -71,8 +71,8 @@ else
+ 	override CFLAGS+=-Wall -Wno-deprecated -pthread $(INCLUDES) -DNDEBUG $(DEFS)
+ 	CXXFLAGS?=-O3 -fstack-protector
+ 	override CXXFLAGS+=-Wall -Wno-deprecated -std=c++17 -pthread $(INCLUDES) -DNDEBUG $(DEFS)
+-	LDFLAGS=-pie -Wl,-z,relro,-z,now
+-	ZT_CARGO_FLAGS=--release
++	LDFLAGS?=-pie -Wl,-z,relro,-z,now
++	ZT_CARGO_FLAGS=--target ${TARGET_NAME} --release
+ endif
+ 
+ ifeq ($(ZT_QNAP), 1)
+@@ -111,7 +111,7 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
+ endif
+ 
+ # Determine system build architecture from compiler target
+-CC_MACH=$(shell $(CC) -dumpmachine | cut -d '-' -f 1)
++CC_MACH=${ARCH}
+ ZT_ARCHITECTURE=999
+ ifeq ($(CC_MACH),x86_64)
+ 	ZT_ARCHITECTURE=2
+@@ -298,7 +298,7 @@ ifeq ($(ZT_SSO_SUPPORTED), 1)
+ 		ifeq ($(ZT_DEBUG),1)
+ 			LDLIBS+=rustybits/target/debug/libzeroidc.a -ldl -lssl -lcrypto
+ 		else
+-			LDLIBS+=rustybits/target/release/libzeroidc.a -ldl -lssl -lcrypto
++			LDLIBS+=.${TARGET_NAME}/target/${TARGET_NAME}/release/libzeroidc.a -ldl -lssl -lcrypto
+ 		endif
+ 	endif
+ endif
+-- 
+2.34.1
+
