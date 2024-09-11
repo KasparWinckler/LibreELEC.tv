@@ -1,7 +1,7 @@
 PKG_NAME="zerotier-one"
-PKG_VERSION="1.14.0"
-PKG_SHA256="7191623a81b0d1b552b9431e8864dd3420783ee518394ac1376cee6aaf033291"
-PKG_REV="3"
+PKG_VERSION="1.14.1"
+PKG_SHA256="4f9f40b27c5a78389ed3f3216c850921f6298749e5819e9f2edabb2672ce9ca0"
+PKG_REV="4"
 PKG_LICENSE="BSL1.1"
 PKG_SITE="https://www.zerotier.com/"
 PKG_URL="https://github.com/zerotier/ZeroTierOne/archive/${PKG_VERSION}.tar.gz"
@@ -20,8 +20,9 @@ pre_make_target() {
   export CXX="clang++"
   export CFLAGS="--target=${TARGET_NAME} --sysroot=${SYSROOT_PREFIX}"
   export CXXFLAGS="${CFLAGS}"
+  export INCLUDES="-I.${TARGET_NAME}/target"
   export TARGET_NAME
-  #echo $TARGET
+  export ZT_CARGO_FLAGS="--target ${TARGET_NAME}"
   cd ..
 }
 
