@@ -1,14 +1,14 @@
-From 71ffd00d273ccf2c5f2361cd76a59cfd23d5474a Mon Sep 17 00:00:00 2001
+From 29edb864e8d121485fff6a39a535c71825df022e Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
-Date: Mon, 2 Sep 2024 00:17:44 +0200
-Subject: [PATCH] adapt make-linux.mk to LibreELEC
+Date: Wed, 11 Sep 2024 18:11:53 +0200
+Subject: [PATCH] zerotier-one: adapt make-linux.mk to LibreELEC
 
 ---
- make-linux.mk | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ make-linux.mk | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/make-linux.mk b/make-linux.mk
-index bfa416aa..ae30b5df 100644
+index efc1badf..cdddf8e6 100644
 --- a/make-linux.mk
 +++ b/make-linux.mk
 @@ -9,7 +9,7 @@ ifeq ($(origin CXX),default)
@@ -16,18 +16,16 @@ index bfa416aa..ae30b5df 100644
  endif
  
 -INCLUDES?=-Irustybits/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
-+INCLUDES?=-I.${TARGET_NAME}/target -Irustybits/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
++INCLUDES+=-Irustybits/target -isystem ext -Iext/prometheus-cpp-lite-1.0/core/include -Iext-prometheus-cpp-lite-1.0/3rdparty/http-client-lite/include -Iext/prometheus-cpp-lite-1.0/simpleapi/include
  DEFS?=
  LDLIBS?=
  DESTDIR?=
-@@ -71,8 +71,8 @@ else
- 	override CFLAGS+=-Wall -Wno-deprecated -pthread $(INCLUDES) -DNDEBUG $(DEFS)
+@@ -72,7 +72,7 @@ else
  	CXXFLAGS?=-O3 -fstack-protector
  	override CXXFLAGS+=-Wall -Wno-deprecated -std=c++17 -pthread $(INCLUDES) -DNDEBUG $(DEFS)
--	LDFLAGS=-pie -Wl,-z,relro,-z,now
+ 	LDFLAGS?=-pie -Wl,-z,relro,-z,now
 -	ZT_CARGO_FLAGS=--release
-+	LDFLAGS?=-pie -Wl,-z,relro,-z,now
-+	ZT_CARGO_FLAGS=--target ${TARGET_NAME} --release
++	ZT_CARGO_FLAGS+=--release
  endif
  
  ifeq ($(ZT_QNAP), 1)
