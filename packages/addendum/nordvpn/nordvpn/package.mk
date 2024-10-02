@@ -1,12 +1,12 @@
 PKG_NAME="nordvpn"
-PKG_VERSION="3.18.5"
-PKG_SHA256="ae19647c583270a597a1586eceeb3b7c656816bbbfd02f4d1479e99a096b899c"
-PKG_REV="7"
+PKG_VERSION="3.19.0"
+PKG_SHA256="d9635018b8511827d09e8aeafbcd3613e7c081cbea79c9fe26678c7d004e871d"
+PKG_REV="8"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://nordvpn.com/"
 PKG_URL="https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain cargo:host go:host iproute2 ipset libxml2 sysctl"
+PKG_DEPENDS_TARGET="toolchain go:host iproute2 ipset libdrop libtelio libxml2 sysctl"
 PKG_TOOLCHAIN="manual"
 
 PKG_IS_ADDON="yes"
@@ -19,7 +19,8 @@ PKG_LONGDESC="The NordVPN Linux application (${PKG_VERSION}) provides a simple a
 
 configure_target() {
   go_configure
-  export LDFLAGS="-w -linkmode external -extldflags -Wl,--unresolved-symbols=ignore-in-shared-libs,-L.${TARGET_NAME}/target/${TARGET_NAME}/release,-lfoss -extld ${CC} \
+
+  export LDFLAGS="-w -linkmode external -extldflags -Wl,--unresolved-symbols=ignore-in-shared-libs,-L$(get_build_dir libdrop),-lnorddrop,-L$(get_build_dir libtelio),-ltelio -extld ${CC} \
                   -X main.Environment=prod \
                   -X main.Hash=${PKG_SHA256} \
                   -X main.Salt=${NORDVPN_SALT:?Pass me the NORDVPN_SALT} \
@@ -37,27 +38,25 @@ configure_target() {
 }
 
 make_target() {
-  cd build/foss
-    cargo build --target ${TARGET_NAME} --release
-    cd -
   ${GOLANG} build -a -ldflags "${LDFLAGS}" -o bin/nordvpn ./cmd/cli
   ${GOLANG} build -a -ldflags "${LDFLAGS}" -buildmode=pie -tags=drop,telio -o bin/nordvpnd ./cmd/daemon
-}
-
-makeinstall_target() {
-  mkdir -p ${INSTALL}/usr/bin
-    cp ${PKG_BUILD}/bin/* \
-	   ${INSTALL}/usr/bin
+  ${STRIP} ${PKG_BUILD}/bin/*
 }
 
 addon() {
   mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/bin
-    cp ${PKG_INSTALL}/usr/bin/nordvpn \
+    cp ${PKG_BUILD}/bin/nordvpn \
        ${ADDON_BUILD}/${PKG_ADDON_ID}/bin
+    patchelf --add-rpath '${ORIGIN}/../lib.private' ${ADDON_BUILD}/${PKG_ADDON_ID}/bin/nordvpn
+  mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/lib.private
+    cp $(get_build_dir libdrop)/*.so \
+       $(get_build_dir libtelio)/*.so \
+       ${ADDON_BUILD}/${PKG_ADDON_ID}/lib.private
   mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
-    cp ${PKG_INSTALL}/usr/bin/nordvpnd \
-	     $(get_install_dir iproute2)/sbin/ip \
-	     $(get_install_dir ipset)/usr/sbin/ipset \
-	     $(get_install_dir sysctl)/usr/bin/sysctl \
-	     ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
+    cp ${PKG_BUILD}/bin/nordvpnd \
+       $(get_install_dir iproute2)/sbin/ip \
+       $(get_install_dir ipset)/usr/sbin/ipset \
+       $(get_install_dir sysctl)/usr/bin/sysctl \
+       ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin
+    patchelf --add-rpath '${ORIGIN}/../lib.private' ${ADDON_BUILD}/${PKG_ADDON_ID}/sbin/nordvpnd
 }
