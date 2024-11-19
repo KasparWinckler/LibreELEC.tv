@@ -1,4 +1,4 @@
-From fdb6fdce1f15bb4f0623f65fb8f818a17a4ef72e Mon Sep 17 00:00:00 2001
+From fe94c31f028b8cc49e1dfd87267428b4e34f0d9b Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Fri, 23 Aug 2024 17:31:10 +0200
 Subject: [PATCH 2/2] LibreELEC default settings
@@ -32,5 +32,5 @@ index 9ac97e8..17cc765 100644
  }
  
 -- 
-2.34.1
+2.43.0
 
