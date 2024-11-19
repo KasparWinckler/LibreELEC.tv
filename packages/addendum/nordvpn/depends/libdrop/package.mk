@@ -1,10 +1,10 @@
 PKG_NAME="libdrop"
-PKG_VERSION="7.0.0"
-PKG_SHA256="b763c63e6d6075604f89289ea28c320a064559666749f803759f30b601f3e473"
+PKG_VERSION="8.1.1"
+PKG_SHA256="a64a341e985525b93264f0468b4d4075354eeeafc868339fd7571887dc6a324c"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/NordSecurity/libdrop"
 PKG_URL="https://github.com/NordSecurity/libdrop/archive/refs/tags/v${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain cargo:host"
+PKG_DEPENDS_TARGET="toolchain cargo:host sqlite"
 PKG_LONGDESC="libdrop"
 PKG_TOOLCHAIN="manual"
 
