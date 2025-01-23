@@ -1,4 +1,4 @@
-From ba265e11bee770780c1168f5382b02e8e9b3156c Mon Sep 17 00:00:00 2001
+From e1be39580f2afbe6c9024faab5604206c5a4a3d6 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Tue, 23 Jul 2024 16:42:31 +0200
 Subject: [PATCH 1/2] LibreELEC constants
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] LibreELEC constants
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/internal/constants.go b/internal/constants.go
-index 81915c0..b3c9403 100644
+index 0850eaf..922aaee 100644
 --- a/internal/constants.go
 +++ b/internal/constants.go
 @@ -26,7 +26,7 @@ const (
@@ -20,7 +20,7 @@ index 81915c0..b3c9403 100644
  
  	// PermUserRWX user permission type to read write and execute
  	PermUserRWX = 0700
-@@ -104,17 +104,17 @@ var (
+@@ -109,17 +109,17 @@ var (
  	RunDir = PrefixCommonPath("/run/nordvpn")
  
  	// LogPath defines where logs are located if systemd isn't used
