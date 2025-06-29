@@ -1,6 +1,6 @@
 PKG_NAME="libdrop"
-PKG_VERSION="8.1.1"
-PKG_SHA256="a64a341e985525b93264f0468b4d4075354eeeafc868339fd7571887dc6a324c"
+PKG_VERSION="8.2.4"
+PKG_SHA256="3025ba70bf5b5aec5b1f6cde75f44c3f5130f11aa7b77b30fe02731761aa36b2"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/NordSecurity/libdrop"
 PKG_URL="https://github.com/NordSecurity/libdrop/archive/refs/tags/v${PKG_VERSION}.tar.gz"
