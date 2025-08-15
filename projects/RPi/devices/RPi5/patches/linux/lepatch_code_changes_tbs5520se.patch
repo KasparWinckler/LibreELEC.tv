@@ -1551,7 +1551,7 @@ index e69de29..10e0e37 100644
 +			goto err_base_kfree;
 +		}
 +		base->muxc->priv = client;
-+		ret = i2c_mux_add_adapter(base->muxc, 0, 0, 0);
++		ret = i2c_mux_add_adapter(base->muxc, 0, 0);
 +		if (ret)
 +			goto err_base_kfree;
 +		base->tuner_adapter = base->muxc->adapter[0];
@@ -1981,7 +1981,7 @@ index e69de29..c456e93 100644
 +	si2183_config.RF_switch = NULL;
 +	si2183_config.agc_mode = 0x5 ;
 +	memset(&info, 0, sizeof(struct i2c_board_info));
-+	strlcpy(info.type, "si2183", I2C_NAME_SIZE);
++	strscpy(info.type, "si2183", I2C_NAME_SIZE);
 +	info.addr = 0x67;
 +	info.platform_data = &si2183_config;
 +	request_module(info.type);
@@ -2015,7 +2015,7 @@ index e69de29..c456e93 100644
 +	si2157_config.fe = adap->fe_adap[0].fe;
 +	si2157_config.if_port = 1;
 +	memset(&info, 0, sizeof(struct i2c_board_info));
-+	strlcpy(info.type, "si2157", I2C_NAME_SIZE);
++	strscpy(info.type, "si2157", I2C_NAME_SIZE);
 +	info.addr = 0x61;
 +	info.platform_data = &si2157_config;
 +	request_module(info.type);
@@ -2063,9 +2063,9 @@ index e69de29..c456e93 100644
 +	tbs5520se_op_rw(d->udev, 0x8a, 0, 0,
 +			buf, 2, TBS5520SE_WRITE_MSG);
 +
-+	strlcpy(adap->fe_adap[0].fe->ops.info.name,d->props.devices[0].name,52);
++	strscpy(adap->fe_adap[0].fe->ops.info.name,d->props.devices[0].name,52);
 +	strcat(adap->fe_adap[0].fe->ops.info.name," DVB-T/T2/C/C2/ISDB-T");
-+	strlcpy(adap->fe_adap[0].fe2->ops.info.name,d->props.devices[0].name,52);
++	strscpy(adap->fe_adap[0].fe2->ops.info.name,d->props.devices[0].name,52);
 +	strcat(adap->fe_adap[0].fe2->ops.info.name," DVB-S/S2/S2X");
 +
 +	return 0;
