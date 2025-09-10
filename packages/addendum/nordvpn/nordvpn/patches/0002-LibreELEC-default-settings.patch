@@ -1,4 +1,4 @@
-From dff7decab09bf118ff91c6e4fa05bef94cf9e131 Mon Sep 17 00:00:00 2001
+From 5c866f7764daf217a8e3d5637672aa547e0b21ed Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Sun, 29 Jun 2025 12:56:17 +0200
 Subject: [PATCH 2/2] LibreELEC default settings
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] LibreELEC default settings
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/config/config.go b/config/config.go
-index 07fab1d3..38ea9f4d 100644
+index 272d5d20..395ceaea 100644
 --- a/config/config.go
 +++ b/config/config.go
 @@ -14,7 +14,7 @@ const defaultFWMarkValue uint32 = 0xe1f1
