@@ -1,14 +1,14 @@
-From 29edb864e8d121485fff6a39a535c71825df022e Mon Sep 17 00:00:00 2001
+From b4c4c686e048c783df56b3c9e4ac16cebfbc7658 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
-Date: Wed, 11 Sep 2024 18:11:53 +0200
-Subject: [PATCH] zerotier-one: adapt make-linux.mk to LibreELEC
+Date: Sun, 14 Sep 2025 16:29:40 +0200
+Subject: [PATCH] adapt make-linux.mk to LibreELEC
 
 ---
  make-linux.mk | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/make-linux.mk b/make-linux.mk
-index efc1badf..cdddf8e6 100644
+index 5ac8a7d95..8ac881839 100644
 --- a/make-linux.mk
 +++ b/make-linux.mk
 @@ -9,7 +9,7 @@ ifeq ($(origin CXX),default)
@@ -20,7 +20,7 @@ index efc1badf..cdddf8e6 100644
  DEFS?=
  LDLIBS?=
  DESTDIR?=
-@@ -72,7 +72,7 @@ else
+@@ -87,7 +87,7 @@ else
  	CXXFLAGS?=-O3 -fstack-protector
  	override CXXFLAGS+=-Wall -Wno-deprecated -std=c++17 -pthread $(INCLUDES) -DNDEBUG $(DEFS)
  	LDFLAGS?=-pie -Wl,-z,relro,-z,now
@@ -29,16 +29,16 @@ index efc1badf..cdddf8e6 100644
  endif
  
  ifeq ($(ZT_QNAP), 1)
-@@ -111,7 +111,7 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
+@@ -122,7 +122,7 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
  endif
  
- # Determine system build architecture from compiler target
+ # Determine system build architecture from compiler target. This is hairy due to "ARM wrestling."
 -CC_MACH=$(shell $(CC) -dumpmachine | cut -d '-' -f 1)
 +CC_MACH=${ARCH}
  ZT_ARCHITECTURE=999
  ifeq ($(CC_MACH),x86_64)
  	ZT_ARCHITECTURE=2
-@@ -298,7 +298,7 @@ ifeq ($(ZT_SSO_SUPPORTED), 1)
+@@ -313,7 +313,7 @@ ifeq ($(ZT_SSO_SUPPORTED), 1)
  		ifeq ($(ZT_DEBUG),1)
  			LDLIBS+=rustybits/target/debug/libzeroidc.a -ldl -lssl -lcrypto
  		else
@@ -48,5 +48,5 @@ index efc1badf..cdddf8e6 100644
  	endif
  endif
 -- 
-2.34.1
+2.43.0
 
