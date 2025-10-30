@@ -1,4 +1,4 @@
-From 94816613f888702797b1d63486aaaebfd6472e00 Mon Sep 17 00:00:00 2001
+From ac0df298c0b7c17553d24e2768c86c371f808254 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Tue, 23 Jul 2024 16:42:31 +0200
 Subject: [PATCH 1/2] LibreELEC constants
@@ -8,10 +8,10 @@ Subject: [PATCH 1/2] LibreELEC constants
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/internal/constants.go b/internal/constants.go
-index 70a3807f..20f2ae5c 100644
+index 1338f526..42ce3c52 100644
 --- a/internal/constants.go
 +++ b/internal/constants.go
-@@ -26,7 +26,7 @@ const (
+@@ -27,7 +27,7 @@ const (
  	TmpDir = "/tmp/"
  
  	// NordvpnGroup that can access daemon socket
@@ -20,7 +20,7 @@ index 70a3807f..20f2ae5c 100644
  
  	// PermUserRWX user permission type to read write and execute
  	PermUserRWX = 0700
-@@ -106,17 +106,17 @@ var (
+@@ -107,17 +107,17 @@ var (
  	RunDir = PrefixCommonPath("/run/nordvpn")
  
  	// LogPath defines where logs are located if systemd isn't used
