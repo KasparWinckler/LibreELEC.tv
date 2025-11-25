@@ -1,4 +1,4 @@
-From ac0df298c0b7c17553d24e2768c86c371f808254 Mon Sep 17 00:00:00 2001
+From 5131405505fb7fbd59a697c7681cf662b2a847d8 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Tue, 23 Jul 2024 16:42:31 +0200
 Subject: [PATCH 1/2] LibreELEC constants
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] LibreELEC constants
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/internal/constants.go b/internal/constants.go
-index 1338f526..42ce3c52 100644
+index 622d635f..9d0274de 100644
 --- a/internal/constants.go
 +++ b/internal/constants.go
 @@ -27,7 +27,7 @@ const (
