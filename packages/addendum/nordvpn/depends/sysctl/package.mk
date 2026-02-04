@@ -1,6 +1,6 @@
 PKG_NAME="sysctl"
-PKG_VERSION="4.0.5"
-PKG_SHA256="7e4b385e8f3e426089f3bb04e3bf150c710b875bd005474f034486b2379ce221"
+PKG_VERSION="4.0.6"
+PKG_SHA256="144410bd111330b191d4384ba6e8b4861390c644b7188e9487f779116b35a33c"
 PKG_LICENSE="GPL"
 PKG_SITE="https://gitlab.com/procps-ng/procps"
 PKG_URL="https://gitlab.com/procps-ng/procps/-/archive/v${PKG_VERSION}/procps-v${PKG_VERSION}.tar.bz2"
