@@ -1,7 +1,7 @@
 PKG_NAME="nordvpn"
-PKG_VERSION="4.4.0"
-PKG_SHA256="e2f0f476bf0011154ca3193004cddc4b29167db32c5081d1b194f579cc335c6e"
-PKG_REV="11"
+PKG_VERSION="4.5.0"
+PKG_SHA256="c06567edbba523eaba3e35949c617e529f26f7f84b70353136b09caa4d833ca3"
+PKG_REV="12"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://nordvpn.com/"
@@ -31,10 +31,6 @@ configure_target() {
   export ENVIRONMENT="prod"
   export REVISION=1
   export VERSION=${PKG_VERSION}
-
-  # gokogiri could not determine kind of name for C.free
-  ${GOLANG} mod edit -replace github.com/jbowtie/gokogiri=github.com/KasparWinckler/gokogiri@b026747eeb5eef30800ef348cb23094c24812ebc
-  ${GOLANG} mod tidy
 }
 
 make_target() {
