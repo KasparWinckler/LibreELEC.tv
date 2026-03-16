@@ -1,6 +1,6 @@
 PKG_NAME="iproute2"
-PKG_VERSION="6.18.0"
-PKG_SHA256="92c97e3d47a9d4faf9ee3016bc1145471474ebabbbf20962a51d3a7d0d82e321"
+PKG_VERSION="6.19.0"
+PKG_SHA256="b39ac6a76f8299968408d3f2948ea59d9502b299d3e0c78c93658b65df3be5be"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://wiki.linuxfoundation.org/networking/iproute2"
 PKG_URL="https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-${PKG_VERSION}.tar.gz"
