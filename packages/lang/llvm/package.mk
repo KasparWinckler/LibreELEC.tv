@@ -13,7 +13,9 @@ PKG_DEPENDS_TARGET="toolchain llvm:host zlib"
 PKG_LONGDESC="Low-Level Virtual Machine (LLVM) is a compiler infrastructure."
 PKG_TOOLCHAIN="cmake"
 
-PKG_CMAKE_OPTS_COMMON="-DLLVM_INCLUDE_TOOLS=ON \
+PKG_CMAKE_OPTS_COMMON="-DLLVM_PARALLEL_COMPILE_JOBS=12 \
+                       -DLLVM_PARALLEL_LINK_JOBS=12 \
+                       -DLLVM_INCLUDE_TOOLS=ON \
                        -DLLVM_BUILD_TOOLS=OFF \
                        -DLLVM_BUILD_UTILS=OFF \
                        -DLLVM_BUILD_EXAMPLES=OFF \
