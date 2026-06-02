@@ -1,0 +1,25 @@
+# Kodi Media Center language file
+# Addon Name: Audio Switch
+# Addon id: service.audio_switch
+msgid ""
+msgstr ""
+
+msgctxt "#32000"
+msgid "General Settings"
+msgstr ""
+
+msgctxt "#32001"
+msgid "Audio Output Device"
+msgstr ""
+
+msgctxt "#32002"
+msgid "Hardware profile assigned to audio streams."
+msgstr ""
+
+msgctxt "#32003"
+msgid "Video Output Device"
+msgstr ""
+
+msgctxt "#32004"
+msgid "Hardware profile assigned to video streams."
+msgstr ""

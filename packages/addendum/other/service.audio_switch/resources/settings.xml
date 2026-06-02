@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<settings>
+  <category label="32000">
+    <setting id="device_audio" type="text" label="32001" help="32002"/>
+    <setting id="device_video" type="text" label="32003" help="32004"/>
+  </category>
+</settings>
