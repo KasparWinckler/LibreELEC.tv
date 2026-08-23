@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. /etc/profile
+oe_setup_addon service.zerotier-one
+
+BIN_DIR="${ADDON_DIR}/bin.private"
+
+chmod +x "${BIN_DIR}"/*
+
+ZEROTIER_HOME="${ADDON_HOME}" \
+exec "${BIN_DIR}/zerotier-one" "${@}"
+
