@@ -1,0 +1,33 @@
+From abe689f8e06b139af0fbb6c9c4365c7c7b069c05 Mon Sep 17 00:00:00 2001
+From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
+Date: Sun, 29 Jun 2025 12:56:17 +0200
+Subject: [PATCH 2/2] LibreELEC default settings
+
+---
+ config/config.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config/config.go b/config/config.go
+index 128b74fd..b8dfca1d 100644
+--- a/config/config.go
++++ b/config/config.go
+@@ -14,7 +14,7 @@ const defaultFWMarkValue uint32 = 0xe1f1
+ func newConfig(machineIDGetter MachineIDGetter) *Config {
+ 	return &Config{
+ 		Technology:   Technology_NORDLYNX,
+-		Firewall:     true,
++		Firewall:     false,
+ 		FirewallMark: defaultFWMarkValue,
+ 		AutoConnectData: AutoConnectData{
+ 			Protocol: Protocol_UDP,
+@@ -23,6 +23,7 @@ func newConfig(machineIDGetter MachineIDGetter) *Config {
+ 		UsersData:        &UsersData{NotifyOff: UidBoolMap{}, TrayOff: UidBoolMap{}},
+ 		TokensData:       map[int64]TokenData{},
+ 		AnalyticsConsent: ConsentUndefined,
++		LanDiscovery:     true,
+ 	}
+ }
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,15 @@
+[Unit]
+Description=NordVPN daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+SyslogIdentifier=%N
+ExecStart=/storage/.kodi/addons/%N/bin/nordvpnd.sh
+KillMode=process
+NonBlocking=true
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
