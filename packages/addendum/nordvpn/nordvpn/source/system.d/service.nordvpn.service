@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 SyslogIdentifier=%N
-ExecStart=/storage/.kodi/addons/%N/bin/nordvpnd.sh
+ExecStart=/storage/.kodi/addons/%N/bin/nordvpnd
 KillMode=process
 NonBlocking=true
 Restart=on-failure
@@ -13,3 +13,4 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+
