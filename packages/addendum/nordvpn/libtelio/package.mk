@@ -1,6 +1,6 @@
 PKG_NAME="libtelio"
-PKG_VERSION="6.2.4"
-PKG_SHA256="0377bcc252421eb2f33a09e0c368fe49a06cb4e4453b385f3f7e5c8b616d4708"
+PKG_VERSION="6.2.5"
+PKG_SHA256="d6608585ef6a0df97dfb31776460d7496e716c59bcb7014d2e98f5f10ba19e02"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/NordSecurity/libtelio"
 PKG_URL="https://github.com/NordSecurity/libtelio/archive/refs/tags/v${PKG_VERSION}.tar.gz"
