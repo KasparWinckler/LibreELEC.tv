@@ -1,0 +1,19 @@
+diff -Naur iproute2-7.3.0/tc/emp_ematch.l iproute2-7.3.0-yyunput/tc/emp_ematch.l
+--- iproute2-7.3.0/tc/emp_ematch.l	2026-10-21 04:33:40.000000000 +0200
++++ iproute2-7.3.0-yyunput/tc/emp_ematch.l	2026-11-18 14:04:33.455693656 +0100
+@@ -32,7 +32,6 @@
+ 	}								\
+  }
+ 
+- static void __attribute__ ((unused)) yyunput (int c,char *buf_ptr  );
+  static void __attribute__ ((unused)) yy_push_state (int  new_state );
+  static void __attribute__ ((unused)) yy_pop_state  (void);
+  static int  __attribute__ ((unused)) yy_top_state (void );
+@@ -67,6 +66,7 @@
+ %x lexstr
+ 
+ %option 8bit stack warn noyywrap prefix="ematch_"
++%option nounput
+ %%
+ [ \t\r\n]+
+ 

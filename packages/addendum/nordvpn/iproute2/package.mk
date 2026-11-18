@@ -1,6 +1,6 @@
 PKG_NAME="iproute2"
-PKG_VERSION="7.2.0"
-PKG_SHA256="30700923d57f05fa633065f89291ee49c6a8911a9578478c62eaf125470fbd22"
+PKG_VERSION="7.3.0"
+PKG_SHA256="154088d6af9624dd0c864b029623503bb590c4901cb0a721d48a08a388ee97a5"
 PKG_LICENSE="GPLv2"
 PKG_SITE="https://wiki.linuxfoundation.org/networking/iproute2"
 PKG_URL="https://github.com/iproute2/iproute2/archive/refs/tags/v${PKG_VERSION}.tar.gz"
