@@ -1,4 +1,4 @@
-From 9525f61549a05b04c61c30ea252d020187b4e64c Mon Sep 17 00:00:00 2001
+From 9c15c69ee023098387e4aa3b6dda881461d3c169 Mon Sep 17 00:00:00 2001
 From: Kaspar Winckler <155115050+KasparWinckler@users.noreply.github.com>
 Date: Wed, 21 Oct 2026 15:55:15 +0200
 Subject: [PATCH 2/2] LibreELEC default settings
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] LibreELEC default settings
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/config/config.go b/config/config.go
-index 23df80f1..71c169b2 100644
+index 706be9a4..f47a2d55 100644
 --- a/config/config.go
 +++ b/config/config.go
-@@ -14,12 +14,13 @@ const defaultFWMarkValue uint32 = 0xe1f1
+@@ -16,12 +16,13 @@ const defaultFWMarkValue uint32 = 0xe1f1
  func newConfig(machineIDGetter MachineIDGetter) *Config {
  	return &Config{
  		VPNProtocol:      VPNProtocol_VPN_PROTOCOL_NORDLYNX,
